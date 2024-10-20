@@ -1,16 +1,20 @@
 const Completed = ({ task, taskList }) => {
 
+    // Function to handle the deletion of completed task
     const handleDelete = () => {
         let removeIndex = taskList.indexOf(task);
+
         taskList.splice(removeIndex, 1);
+
+        // Update the local storage and reload
         localStorage.setItem('completedTasks', JSON.stringify(taskList));
         window.location.reload();
     }
 
     // Calculate hours, minutes, and seconds
-    const hours = Math.floor(task.duration / 3600000); // Calculate complete hours
-    const minutes = Math.floor((task.duration % 3600000) / 60000); // Calculate remaining minutes
-    const seconds = Math.floor((task.duration % 60000) / 1000); // Calculate remaining seconds
+    const hours = Math.floor(task.duration / 3600000);
+    const minutes = Math.floor((task.duration % 3600000) / 60000);
+    const seconds = Math.floor((task.duration % 60000) / 1000);
 
     // Format with leading zeros for hours, minutes, and seconds
     const formattedHours = ('0' + hours).slice(-2);
@@ -20,8 +24,12 @@ const Completed = ({ task, taskList }) => {
     return (
         <>
             <div
+                style={{
+                    backgroundColor: '#168437',
+                    boxShadow: '12px 12px 0px -6px rgba(0,0,0,0.6)'
+                }}
                 className='flex flex-col items-start justify-start bg-white
-                my-4 ml-6 px-6 py-4 w-3/4 max-w-lg'>
+                my-4 ml-6 px-6 py-4 w-3/4 max-w-lg min-w-[320px]'>
                 <p className='font-semibold text-xl'>{task.projectName}</p>
                 <p className='text-lg py-2'>{task.taskDescription}</p>
                 <div>
