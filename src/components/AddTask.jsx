@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const AddTask = ({ taskList, setTaskList }) => {
+const AddTask = ({ taskList }) => {
     // State to control the visibility of the modal
     const [addModal, setAddModal] = useState(false);
     // State to store the input value for project name
